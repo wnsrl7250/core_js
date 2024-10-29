@@ -13,6 +13,13 @@
 
 
 
-1. Javascript core branch [바로가기](https://github.com/simseonbeom/core_js/tree/01.core)
-2. Javascript dom branch [바로가기](https://github.com/simseonbeom/core_js/tree/02.dom)
+### Basic
+
+- [x] Code Structure [바로가기](https://github.com/simseonbeom/core_js/blob/main/client/chapter/core/01.codeStructure.js)
+- [x] Variable [바로가기](https://github.com/simseonbeom/core_js/blob/main/client/chapter/core/02.variables.js)
+
+
+
+
+
 
