@@ -6,7 +6,6 @@
 console.log('variable');
 
 
-
 let admin;
 let name;
 
