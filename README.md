@@ -15,8 +15,13 @@
 
 ### Basic
 
-- [x] Code Structure [바로가기](https://github.com/simseonbeom/core_js/blob/main/client/chapter/core/01.codeStructure.js)
-- [x] Variable [바로가기](https://github.com/simseonbeom/core_js/blob/main/client/chapter/core/02.variables.js)
+- [x] Code Structure [바로가기](https://github.com/simseonbeom/core_js/blob/01.core/client/chapter/core/01.codeStructure.js)
+- [x] Variable [바로가기](https://github.com/simseonbeom/core_js/blob/01.core/client/chapter/core/02.variables.js)
+- [x] Strict Mode [바로가기](https://github.com/simseonbeom/core_js/blob/01.core/client/chapter/core/03.strictMode.js)
+- [x] Global This [바로가기](https://github.com/simseonbeom/core_js/blob/01.core/client/chapter/core/04.globalThis.js)
+- [x] Legacy Var [바로가기](https://github.com/simseonbeom/core_js/blob/01.core/client/chapter/core/05.legacyVar.js)
+- [x] Data Types [바로가기](https://github.com/simseonbeom/core_js/blob/01.core/client/chapter/core/06.dataTypes.js)
+- [ ] Type Conversion [바로가기](https://github.com/simseonbeom/core_js/blob/01.core/client/chapter/core/07.typeConversion.js)
 
 
 
