@@ -152,7 +152,58 @@ const _a6 = new User();
 
 // Array
 
+
+
+const arr = ['a',{name:'tiger'},()=>{},4,5];
+
+console.log( arr );
+
+const newArray = new Array(10);
+
+console.log(newArray);
+
+
+
+console.clear()
+
 // function
+
+
+function sum (a,b){
+  
+   return a + b
+}
+
+
+const result = sum(10,5);
+
+console.log( result );
+
+
+
+
+function 붕어빵틀(재료){
+
+  return `따끈하고 맛있는 ${재료} 맛 붕어빵입니다!`
+}
+
+
+
+const 팥붕 = 붕어빵틀('팥');
+const 슈붕 = 붕어빵틀('슈크림');
+const 와붕 = 붕어빵틀('와사비');
+const 피붕 = 붕어빵틀('피자');
+
+
+
+
+const f = new Function('asdasdasd')
+
+console.log( f );
+
+
+
+
 
 // this
 
