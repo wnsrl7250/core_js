@@ -35,20 +35,29 @@ let whichFalsy;
 // 첫번째 Truthy를 찾는 연산 (||)
 let whichTruthy;
 
-let userName = prompt('누구십니까?');
+function login() {
+  let userName = prompt('누구십니까?');
 
-if (userName.toLowerCase() == 'admin') {
-  let passWord = prompt('비밀번호를 입력해주세요.');
+  // if (userName === null || userName === undefined) return;
+  // 함수는 return을 만나면 함수를 종료
+  // if (!userName) return;
 
-  if (passWord.toLowerCase() == 'master') {
-    console.log('환영합니다!');
-  } else if (passWord == null) {
+  if (userName.toLowerCase() === 'admin') {
+    let passWord = prompt('비밀번호를 입력해주세요.');
+
+    if (passWord.toUpperCase() === 'MASTER') {
+      console.log('환영합니다!');
+    } else if (passWord === null) {
+      console.log('취소되었습니다.');
+    } else {
+      console.log('인증에 실패했습니다.');
+      login();
+    }
+  } else if (userName === null || userName.replace(/\s*/g, '') === '') {
     console.log('취소되었습니다.');
   } else {
-    console.log('인증에 실패했습니다.');
+    console.log('제대로된 값을 입력해주세요.');
   }
-} else if (userName == null) {
-  console.log('취소되었습니다.');
-} else {
-  console.log('제대로된 값을 입력해주세요.');
 }
+
+login();
