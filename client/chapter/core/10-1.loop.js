@@ -20,18 +20,20 @@ const frontEndDev = ['HTML', 'CSS', 'SVG', 'JavaScript', 'jQuery', 'React', 'Red
 // console.log(frontEndDev[6]);
 
 let i = 0;
-// while (i < frontEndDev.length) {
-//   // console.log(frontEndDev[i++]);
-// }
+while (i < frontEndDev.length) {
+  let value = frontEndDev[i];
+  // console.log(value);
+  i++;
+}
 
 let l = frontEndDev.length - 1;
 
 while (l >= 0) {
   let value = frontEndDev[l];
 
-  value.toUpperCase();
+  console.log(value.toUpperCase());
 
-  console.log(l);
+  // console.log(l);
 
   l--;
 }
