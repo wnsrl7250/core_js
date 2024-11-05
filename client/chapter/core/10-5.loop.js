@@ -98,6 +98,8 @@ const keys = Object.keys(obj); // 객체의 key들을 모아 새로운 배열을
 const values = Object.values(obj); // 객체의 value들을 모아 새로운 배열을 '반환' 하는 유틸 함수
 const entries = Object.entries(obj); // 객체의 [key,value]들을 모아 한 쌍의 배열을 이루는 새로운 배열을 '반환' 하는 유틸 함수
 
+Object.entries(); // 중요
+
 // 배열 구조 분해 할당
 
 for (const [key, value] of Object.entries(obj)) {
