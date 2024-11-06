@@ -85,7 +85,6 @@ function rem(pxValue, base = 16) {
 // console.log(rem('30px', 10));
 
 // css(node: string, prop: string, value: number|strung) : string;
-let css;
 
 // 객체는 연산 표기법 2가지 [ .연산, [대괄호] ]
 
@@ -108,6 +107,39 @@ function setCss(node, prop, value) {
 
 setCss('.first', 'font-size', '100px');
 
+function getCss(node, prop) {
+  if (typeof node === 'string') {
+    node = document.querySelector(node);
+  }
+
+  if (!(prop in document.body.style))
+    throw new ReferenceError('getCss 함수의 두 번째 인수는 유효한 css 속성이어야 합니다.');
+
+  const value = getComputedStyle(node)[prop];
+
+  return value;
+}
+
+const fontSize = getCss('.first', 'font-size');
+
+function css(node, prop, value) {
+  // if (!value) {
+  //   return getCss(node, prop);
+  // } else {
+  //   setCss(node, prop, value);
+  // }
+
+  return !value ? getCss(node, prop) : setCss(node, prop, value);
+}
+
+const _css = (node, prop, value) => (!value ? getCss(node, prop) : setCss(node, prop, value));
+
+const get = css('.first', 'color'); // getter
+
+css('.first', 'color', 'red'); // setter
+
+console.log(get);
+
 // node의 값을 'h1'으로 받았을 경우
 
 // node가 없거나 document.ELEMENT_NODE가 아닐 경우
@@ -124,3 +156,5 @@ setCss('.first', 'font-size', '100px');
 // 2. h1의 폰트 사이즈를 가져온다.
 // 3. 증가함수와 감소함수를 만든다.
 // 4. 클릭 이벤트와 바인딩한다.
+
+getComputedStyle(first).fontSize;
