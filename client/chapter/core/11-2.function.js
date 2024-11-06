@@ -126,11 +126,11 @@ cb(
   () => console.log('실패입니다!')
 );
 
-a(1);
+// a(1);
 
-function a(a) {
-  console.log(a);
-}
+// function a(a) {
+//   console.log(a);
+// }
 
 function movePage(url, success, fail) {
   if (url.includes('https')) {
@@ -165,23 +165,53 @@ movePage(
 
 // 비동기 통신 예시
 
-function getGeolocation(success, fail) {
-  navigator.geolocation.getCurrentPosition((so) => {
-    success(so.coords.latitude);
-  });
-}
+// function getGeolocation(success, fail) {
+//   navigator.geolocation.getCurrentPosition((so) => {
+//     success(so.coords.latitude);
+//   });
+// }
 
-getGeolocation(
-  (data) => {
-    console.log(data);
-  },
-  () => {
-    console.log('fail');
-  }
-);
+// getGeolocation(
+//   (data) => {
+//     console.log(data);
+//   },
+//   () => {
+//     console.log('fail');
+//   }
+// );
 
 // 함수 선언문 vs. 함수 (표현)식
 
 // 즉시 실행 함수 (표현)식
 // Immediately Invoked Function Expression
 let IIFE;
+
+// 함수가 선언됨과 동시에 실행되는 것을 말한다.
+
+// var는 블록 스코프 : x
+// var는 함수 스코프 : o
+
+// encapsulation (캡슐화)
+// 변수를 보호하기 위해
+
+// 모듈 프로그래밍 => import export
+
+(function () {
+  var a = 10;
+})();
+// console.log(a); // a값은 안나옴
+
+const MASTER = (function (g) {
+  console.log(g);
+  var uuid = 'asdfasdfasd2@vasdvKJDFI@3^34';
+
+  // getKey()로 uuid값을 가져오고 setKey()로 uuid값을 변경
+  return {
+    getKey() {
+      return uuid;
+    },
+    setKey(value) {
+      uuid = value;
+    },
+  };
+})(window);
