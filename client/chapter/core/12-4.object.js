@@ -50,6 +50,9 @@ const shopOrder = {
 
 // 일반 함수 (문/식)의 this vs. 화살표 함수 식의 this
 
+// 너 items에 id랑 text랑 link만 넣어야 한다?
+// => typescript
+
 const navigationMenu = {
   name: '글로벌 내비게이션',
   items: [
@@ -63,3 +66,9 @@ const navigationMenu = {
     this.items.push(newItem);
   },
 };
+
+navigationMenu.addItem({
+  id: 'link-l',
+  text: 'lycos',
+  link: 'http://lycos.co.kr',
+});
