@@ -228,10 +228,10 @@ const { 박혜미: 박 = 100, 이성우: 이 = 200, 명재휘: 명 = 300, 김미
 
 const { 박혜미, 이성우, 명재휘, 김미리 } = salaries;
 
-function createUserObject(obj) {
-  console.log(obj);
+function createUserObject({ name = '', age, address, phone, job, gender = 'male' } = {}) {
+  // const { name, age, address, phone, job } = obj;
 
-  return { name: obj.name, age: obj.age, address: obj.address, phone: obj.phone, job: obj.job };
+  return { name, age, address, phone, job, gender };
 }
 
 const data = {
