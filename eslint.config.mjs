@@ -1,19 +1,22 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+import globals from 'globals';
+import pluginJs from '@eslint/js';
 
+const types = {
+  isObject: true,
+};
 
 export default [
   pluginJs.configs.recommended,
   {
-    languageOptions: { 
+    languageOptions: {
       globals: {
-        ...globals.browser, 
-        ...globals.node
-      } 
+        ...globals.browser,
+        ...globals.node,
+        ...types,
+      },
     },
-    rules:{
-      "no-unused-vars":"off"
-    }
+    rules: {
+      'no-unused-vars': 'off',
+    },
   },
-  
 ];
