@@ -4,3 +4,11 @@ h1 {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.first {
+  background-color: dodgerblue;
+}
+
+.second {
+  display: inline-block;
+}
