@@ -16,15 +16,26 @@
     <script src="./lib/dom/css.js" defer></script>
     <script src="./lib/dom/insert.js" defer></script>
     <script src="./lib/dom/attr.js" defer></script>
-    <script src="./chapter/dom/08.bubble.js" defer></script>
+    <script src="./lib/dom/clearContents.js" defer></script>
+    <script src="./main.js" defer></script>
   </head>
   <body>
-    <section>
-      section
-      <article>
-        article
-        <p>p</p>
-      </article>
-    </section>
+    <form class="calculator">
+      <div class="first">
+        <label for="firstNumber">First Value</label>
+        <input type="number" name="first" id="firstNumber" required />
+      </div>
+
+      <div class="operator">+</div>
+
+      <div class="second">
+        <label for="secondNumber">Second Value</label>
+        <input type="number" name="second" id="secondNumber" required />
+      </div>
+
+      <input id="clear" type="submit" value="clear" />
+
+      <div class="result">-</div>
+    </form>
   </body>
 </html>
