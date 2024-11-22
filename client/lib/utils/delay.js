@@ -213,15 +213,12 @@ async function 라면끓이기() {
   console.log(e);
 }
 
-// 라면끓이기();
+// 라면끓이기()
 
-function getData() {
-  xhrPromise.get('https://pokeapi.co/api/v2/pokemon/384').then((res) => {
-    insertLast(
-      document.body,
-      `<img src="${res.sprites.other.showdown['front_default']}" alt="" />`
-    );
-  });
+async function getData() {
+  const data = await xhrPromise.get('https://pokeapi.co/api/v2/pokemon/50');
+
+  insertLast(document.body, `<img src="${data.sprites.other.showdown['front_default']}" alt="" />`);
 }
 
-// getData();
+// getData()

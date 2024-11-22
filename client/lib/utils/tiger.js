@@ -72,11 +72,13 @@ tiger.delete = (url, options) => {
   });
 };
 
-// (async function () {
-//   const response = await tiger.delete(END_POINT + '/1');
+// (async function(){
+
+//   const response = await tiger.delete(END_POINT+'/1');
 
 //   console.log(response.data);
-// })();
+
+// })()
 
 // tiger.get()
 // tiger.put()
