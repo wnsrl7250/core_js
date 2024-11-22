@@ -1,6 +1,7 @@
 import { insertLast } from './insert.js';
 
 // 1. 유저 카드 태그를 생성하는 함수
+
 function createUserCard({
   id,
   username = 'unknown',
@@ -25,6 +26,7 @@ function createUserCard({
 }
 
 // 2-1. 로딩 스피너 태그를 생성하는 함수
+
 function createSpinner(size = 100, loadingMessage = '유저 정보를 가져오는 중..🥹') {
   return `         
     <figure class="loadingSpinner">
@@ -75,7 +77,8 @@ function createSpinner(size = 100, loadingMessage = '유저 정보를 가져오�
   `;
 }
 
-// 3-1. emppty 카드 태그를 생성하는 함수
+// 3-1. empty 카드 태그를 생성하는 함수
+
 function createEmptySVG(emptyMessage = '데이터 정보를 불러오지 못했습니다.') {
   return `
         <figure class="empty-user-card">
@@ -122,6 +125,7 @@ function createEmptySVG(emptyMessage = '데이터 정보를 불러오지 못했�
 // 실제 에러가 발생 후 empty 카드가 랜더링  main.js
 
 // 2. 생성된 유저 카드 태그를 랜더링 함수
+
 export function renderUserCard(target, data) {
   insertLast(target, createUserCard(data));
 }

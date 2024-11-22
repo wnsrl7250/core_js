@@ -144,7 +144,12 @@ async function d() {
   return 1;
 }
 
-const _d = d();
+const _d = await d();
+
+// IIAFE
+
+(async function () {})();
+// console.log(await _d);
 
 // _d.then(console.log)
 
@@ -167,7 +172,7 @@ async function delayA() {
   return result;
 }
 
-// console.log( delayA() );
+// console.log( await delayA() );
 
 function _라면끓이기() {
   delayP({ data: '물' })
