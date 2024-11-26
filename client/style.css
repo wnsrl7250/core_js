@@ -1,12 +1,14 @@
+@import url('./theme.css');
+
 .box {
   background-color: orange;
 }
 
 .card {
-  background-color: dodgerblue;
+  background-color: var(--primary);
 }
 
 p {
-  background-color: red;
+  background-color: var(--secondary);
   font-size: 2rem;
 }
