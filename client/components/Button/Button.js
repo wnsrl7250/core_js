@@ -1,10 +1,13 @@
 export class Button extends HTMLElement {
   constructor() {
     super();
+
     this.attachShadow({ mode: 'open' });
+
     this.state = {
       active: this.getAttribute('active') || false,
     };
+
     this.render();
   }
   static get observedAttributes() {
@@ -23,6 +26,7 @@ export class Button extends HTMLElement {
     const newActiveState = !this.state.active;
     this.setAttribute('active', newActiveState);
   }
+
   render() {
     const { active } = this.state;
 
