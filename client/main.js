@@ -8,4 +8,6 @@ function defineElements() {
 
 defineElements();
 
-app.append(document.createElement('custom-button'));
+const buttonElement = document.createElement('custom-button');
+
+app.append(buttonElement);
