@@ -33,6 +33,19 @@ export class Counter extends HTMLElement {
     this.dataset.value = this.state.value;
   }
 
+  delegationEvent() {
+    this.shadowRoot.addEventListener('click', (e) => {
+      const target = e.target.closest('button');
+      if (!target) return;
+
+      if (target.classList.contains('increment')) {
+        this.handleIncrement();
+      } else {
+        this.handleDecrement();
+      }
+    });
+  }
+
   render() {
     const { value } = this.state;
 
