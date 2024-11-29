@@ -71,7 +71,7 @@ class TodoList extends LitElement {
         ${s}
       </style>
       <h2 class="title">To Do List</h2>
-
+      ${todosOrMessage}
       <label id="newItem">
         <input
           class="newItem"
