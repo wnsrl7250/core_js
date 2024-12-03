@@ -13,4 +13,13 @@ const direction = {
     left: Direction.LEFT,
     right: Direction.RIGHT,
 };
+var End_point;
+(function (End_point) {
+    End_point["USER"] = "user.com/user";
+    End_point["MONSTER"] = "mosnter.com/mosnter";
+    End_point["IMAGE"] = "randomImage.com/200x200";
+})(End_point || (End_point = {}));
+const END_POINT = {
+    user: End_point.USER,
+};
 export {};
