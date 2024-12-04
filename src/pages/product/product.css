@@ -20,5 +20,26 @@
         gap: 0.6rem;
       }
     }
+
+    .description {
+      font-size: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .price {
+      color: gray;
+      text-decoration: line-through;
+    }
+
+    .discount {
+      font-size: 1.2rem;
+      color: red;
+    }
+
+    .real-price {
+      font-weight: bold;
+    }
   }
 }

@@ -13,6 +13,9 @@ export default [
         ...globals.browser,
         ...globals.node,
       },
+      rules: {
+        "no-unused-vars": "off",
+      },
     },
   },
   pluginJs.configs.recommended,
