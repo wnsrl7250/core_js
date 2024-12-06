@@ -27,6 +27,7 @@ class Register extends LitElement {
         & h2 {
           font-size: 3rem;
           font-weight: bold;
+          margin-bottom: 1rem;
         }
 
         .line {
@@ -46,7 +47,7 @@ class Register extends LitElement {
           display: flex;
           justify-content: space-between;
 
-          & div {
+          & > div {
             width: 440px;
             display: flex;
             flex-direction: column;
