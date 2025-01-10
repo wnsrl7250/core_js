@@ -1,107 +1,131 @@
 import {
-  attr,
-  clearContents,
-  diceAnimation,
-  endScroll,
+  tiger,
+  delayP,
   getNode,
-  getNodes,
   insertLast,
-  memo,
+  changeColor,
+  clearContents,
+  renderSpinner,
+  renderUserCard,
+  renderEmptyCard,
 } from './lib/index.js';
 
-const [rollingButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
-const recordListWrapper = getNode('.recordListWrapper');
+const END_POINT = 'http://localhost:3000/users';
+const userCardInner = getNode('.user-card-inner');
 
-// [주사위 굴리기 버튼을 누르면 주사위가]
-// 1. 주사위 굴리기 버튼을 선택하기
-// 2. 클릭 이벤트 바인딩
+async function renderUserList() {
+  renderSpinner(userCardInner);
 
-// [애니메이션이 될 수 있도록 만들어 주세요]
-// 1. setInterval
-// 2. diceAnimation()
+  try {
+    const response = await tiger.get(END_POINT);
 
-// [같은 버튼 눌렀을 때 ]
-// 1. 상태 변수 true | false
-// 2. 조건 처리
+    // getNode('.loadingSpinner').remove()
 
-// [애니메이션이 재생 or 정지]
-// 1. setInterval
-// 2. clearInterval ( scope )
+    gsap.to('.loadingSpinner', {
+      opacity: 0,
+      onComplete() {
+        this._targets[0].remove();
+      },
+    });
 
-// [기록 버튼을 누르면]
-// 1. recordButton에 클릭 이벤트 바인딩
+    const data = response.data;
 
-// [table이 등장]
-// recordListWrapper에 hidden 속성 제어하기 (true | false)
+    await delayP(1000);
 
-// [table 안쪽에 tr 태그 렌더링]
-// 1. 태그 만들기
-// 2. insertLast 함수 사용하기 (tbody 안쪽에 렌더링)
+    data.forEach((user) => {
+      renderUserCard(userCardInner, user);
+    });
 
-// [table 안쪽에 tr 태그 데이터를 넣고 렌더링]
+    changeColor('.user-card');
 
-// [Item의 갯수가 많아짐에 따라 스크롤을 제일 하단으로 올 수 있도록]
-// 1. scrollTop
-// 2. scrollHeight
-
-// [reset버튼을 눌렀을 때 모든 항목 초기화]
-// hidden
-// 변수 초기화
-
-let count = 0;
-let total = 0;
-
-function createItem(value) {
-  return `
-    <tr>
-      <td>${++count}</td>
-      <td>${value}</td>
-      <td>${(total += value)}</td>
-    </tr>
-  `;
+    gsap.from('.user-card', {
+      x: -100,
+      opacity: 0,
+      stagger: {
+        each: 0.1,
+        from: 'start',
+      },
+    });
+  } catch {
+    renderEmptyCard(userCardInner);
+  }
 }
 
-function renderRecordItem() {
-  // const diceNumber = +attr(getNode('#cube'), 'dice');
-  const diceNumber = +memo('cube').getAttribute('dice');
+renderUserList();
 
-  insertLast('tbody', createItem(diceNumber));
+function handleDeleteCard(e) {
+  const button = e.target.closest('button');
+
+  if (!button) return;
+
+  const article = button.parentElement;
+  const index = article.dataset.index.slice(5);
+
+  tiger.delete(`${END_POINT}/${index}`).then(() => {
+    alert('삭제가 완료됐습니다.');
+
+    // userCardInner.textContent = '';
+
+    clearContents(userCardInner);
+    renderUserList();
+  });
 }
 
-const handleRollingDice = (() => {
-  let isClicked = false;
-  let stopAnimation;
+userCardInner.addEventListener('click', handleDeleteCard);
 
-  return () => {
-    if (!isClicked) {
-      stopAnimation = setInterval(diceAnimation, 100);
-      recordButton.disabled = true;
-      resetButton.disabled = true;
-    } else {
-      clearInterval(stopAnimation);
-      recordButton.disabled = false;
-      resetButton.disabled = false;
-    }
+const createButton = getNode('.create');
+const cancelButton = getNode('.cancel');
+const doneButton = getNode('.done');
 
-    isClicked = !isClicked;
-  };
-})();
+// create 버튼을 선택한다.
+// 클릭 이벤트를 바인딩한다.
+// create에 open 클래스를 추가한다.
 
-function handleRecord() {
-  recordListWrapper.hidden = false;
+// cancel 버튼을 선택한다.
+// 클릭 이벤트를 바인딩한다.
+// create에 open 클래스를 제거한다.
 
-  renderRecordItem();
-  endScroll(recordListWrapper);
+// POST 통신을 해주세요.
+
+// 1. input의 value를 가져온다.
+// 2. value를 모아서 객체를 생성
+// 3. 생성 버튼을 누르면 POST통신을 한다.
+// 4. body에 생성한 객체를 실어보낸다.
+// 5. 카드 컨텐츠 비우기
+// 6. 유저카드 리랜더링
+
+const nameField = getNode('#nameField');
+
+function handleCreate() {
+  // this.classList.add('open');
+  gsap.to('.pop', { autoAlpha: 1 });
+  // getNode('#nameField').focus()
 }
 
-function handleReset() {
-  recordListWrapper.hidden = true;
-
-  clearContents('tbody');
-  count = 0;
-  total = 0;
+function handleCancel(e) {
+  e.stopPropagation();
+  // createButton.classList.remove('open');
+  gsap.to('.pop', { autoAlpha: 0 });
 }
 
-rollingButton.addEventListener('click', handleRollingDice);
-recordButton.addEventListener('click', handleRecord);
-resetButton.addEventListener('click', handleReset);
+function handleDone(e) {
+  e.preventDefault();
+
+  const username = getNode('#nameField').value;
+  const email = getNode('#emailField').value;
+  const website = getNode('#siteField').value;
+
+  tiger.post(END_POINT, { username, email, website }).then(() => {
+    gsap.to('.pop', { autoAlpha: 0 });
+    clearContents(userCardInner);
+    renderUserList();
+
+    getNode('#nameField').value = '';
+    getNode('#emailField').value = '';
+    getNode('#siteField').value = '';
+  });
+}
+
+createButton.addEventListener('click', handleCreate);
+cancelButton.addEventListener('click', handleCancel);
+doneButton.addEventListener('click', handleDone);
