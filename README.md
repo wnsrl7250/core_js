@@ -11,5 +11,4 @@
 
 ### Basic
 
-- [x] Code Structure [바로가기](https://github.com/wnsrl7250/core_js/blob/main/client/chapter/core/01.codeStructure.js)
-- [x] Variable [바로가기](https://github.com/wnsrl7250/core_js/blob/main/client/chapter/core/02.variables.js)
+
